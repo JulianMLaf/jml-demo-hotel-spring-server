@@ -10,9 +10,11 @@ public class ReservationEntityToReservationResponseConverter implements Converte
 	@Override
 	public ReservationResponse convert(ReservationEntity source) {
 		ReservationResponse reservationResponse = new ReservationResponse();
-		reservationResponse.setId(source.getId());
 		reservationResponse.setCheckin(source.getCheckin());
 		reservationResponse.setCheckout(source.getCheckout());
+		
+        if (null != source.getRoomEntity())
+            reservationResponse.setId(source.getRoomEntity().getId());
 		
 		return reservationResponse;
 	}
